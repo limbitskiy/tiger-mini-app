@@ -7,24 +7,54 @@ export const useUserStore = defineStore("user", () => {
   const router = useRouter();
 
   const state = ref({
-    data: {},
+    locale: {},
     tutorial: [
       {
         id: 0,
-        title: "Hello and welcome!",
-        subtitle: "This is a small battle app for learning something!",
-        picture: "tiger.png",
+        title: "Welcome to our app!",
+        subtitle: "Tiger-app is a multiplayer platform for learning languages, making friends and earning achievements.",
+        background: "tiger-bg.png",
       },
       {
         id: 1,
-        title: "Play battles, earn friends and learn!",
-        subtitle: "In our app you can play different types of battles and win prizes",
-        picture: "tiger1.png",
+        title: "<span class='text-[var(--accent-color)]'>Play battles,</span> earn friends and learn!",
+        subtitle: "In Tiger-app you can play different types of battles, earn new achievements and event make new friends while you're at it",
+        background: "tiger-bg1.png",
+      },
+    ],
+    menu: [
+      {
+        id: 0,
+        title: "Home",
+        link: "/home/main",
+        icon: "home",
+      },
+      {
+        id: 1,
+        title: "Battles",
+        link: "/home/battles",
+        icon: "battles",
+      },
+      {
+        id: 2,
+        title: "Friends",
+        link: "/home/friends",
+        icon: "friends",
+      },
+      {
+        id: 3,
+        title: "Options",
+        link: "/home/options",
+        icon: "options",
       },
     ],
   });
 
-  const tutorialData = computed(() => state.value.tutorial);
+  const tutorial = computed(() => state.value.tutorial);
+
+  const menu = computed(() => state.value.menu);
+
+  const locale = computed(() => state.value.locale);
 
   const setData = (data) => {
     state.value.data = data;
@@ -42,5 +72,5 @@ export const useUserStore = defineStore("user", () => {
     }
   };
 
-  return { tutorialData, fetchInitData };
+  return { tutorial, menu, locale, fetchInitData };
 });

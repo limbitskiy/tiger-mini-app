@@ -1,17 +1,17 @@
 <template>
-  <div class="main-page flex w-full min-h-[100dvh] p-4">
-    <router-view v-slot="{ Component }">
-      <transition name="fade" mode="out-in">
+  <div class="main-page flex w-full h-[100dvh] relative">
+    <RouterView v-slot="{ Component, route }">
+      <transition :name="route.meta.transition || 'fade'" mode="out-in">
         <component :is="Component" />
       </transition>
-    </router-view>
+    </RouterView>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useUserStore } from "@/store/user.ts";
 import { storeToRefs } from "pinia";
+import { RouterView } from "vue-router";
 
 const userStore = useUserStore();
-const { introShown } = storeToRefs(userStore);
 </script>

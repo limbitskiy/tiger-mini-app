@@ -1,5 +1,5 @@
 <template>
-  <div class="cnt grid place-items-center w-full">
+  <div class="cnt grid place-items-center w-full p-4">
     <div class="tiger-logo flex flex-col items-center gap-2">
       <svg width="155" height="128" viewBox="0 0 155 128" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
