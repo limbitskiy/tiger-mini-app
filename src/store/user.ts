@@ -8,20 +8,27 @@ export const useUserStore = defineStore("user", () => {
 
   const state = ref({
     locale: {},
-    tutorial: [
-      {
-        id: 0,
-        title: "Welcome to our app!",
-        subtitle: "Tiger-app is a multiplayer platform for learning languages, making friends and earning achievements.",
-        background: "tiger-bg.png",
+    tutorial: {
+      elements: {
+        skipBtn: "Skip",
+        backBtn: "Back",
+        nextBtn: "Next",
       },
-      {
-        id: 1,
-        title: "<span class='text-[var(--accent-color)]'>Play battles,</span> earn friends and learn!",
-        subtitle: "In Tiger-app you can play different types of battles, earn new achievements and event make new friends while you're at it",
-        background: "tiger-bg1.png",
-      },
-    ],
+      slides: [
+        {
+          id: 0,
+          title: "Welcome to our app!",
+          subtitle: "Tiger-app is a multiplayer platform for learning languages, making friends and earning achievements.",
+          background: "tiger-bg.png",
+        },
+        {
+          id: 1,
+          title: "<span class='text-[var(--accent-color)]'>Play battles,</span> earn friends and learn!",
+          subtitle: "In Tiger-app you can play different types of battles, earn new achievements and event make new friends while you're at it",
+          background: "tiger-bg1.png",
+        },
+      ],
+    },
     menu: [
       {
         id: 0,
@@ -65,7 +72,7 @@ export const useUserStore = defineStore("user", () => {
 
     setData(data);
 
-    if (state.value.tutorial?.length) {
+    if (state.value.tutorial?.slides?.length) {
       router.push("/tutorial");
     } else {
       router.push("/");

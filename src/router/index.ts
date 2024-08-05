@@ -20,22 +20,22 @@ const routes = [
       {
         id: 0,
         path: "main",
-        component: () => import("@/views/Main.vue"),
+        component: () => import("@/views/homeViews/Main.vue"),
       },
       {
         id: 1,
         path: "battles",
-        component: () => import("@/views/Battles.vue"),
+        component: () => import("@/views/homeViews/Battles.vue"),
       },
       {
         id: 2,
         path: "friends",
-        component: () => import("@/views/Friends.vue"),
+        component: () => import("@/views/homeViews/Friends.vue"),
       },
       {
         id: 3,
         path: "options",
-        component: () => import("@/views/Options.vue"),
+        component: () => import("@/views/homeViews/Options.vue"),
       },
     ],
   },

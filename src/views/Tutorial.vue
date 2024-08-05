@@ -11,11 +11,12 @@
     </div>
     <div class="tutorial-body flex-1 flex mt-10">
       <Transition name="fade" mode="out-in">
-        <TutorialSlide :data="data[currentSlide]" :key="currentSlide" />
+        <TutorialSlide :data="data.slides[currentSlide]" :key="currentSlide" />
       </Transition>
     </div>
-    <div class="bnt-cnt flex justify-between absolute bottom-2 w-[calc(100vw-2rem)]">
+    <div class="bnt-cnt flex items-center justify-between absolute bottom-2 w-[calc(100vw-2rem)]">
       <Button variant="black" label="Back" @click="prevSlide" />
+      <Stepper :total="6" :current="2" />
       <Button label="Next" @click="nextSlide" />
     </div>
   </div>
@@ -27,6 +28,7 @@ import { useUserStore } from "@/store/user.ts";
 import { storeToRefs } from "pinia";
 import TutorialSlide from "../components/TutorialSlide.vue";
 import Button from "@/components/UI/Button.vue";
+import Stepper from "@/components/UI/Stepper.vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -37,16 +39,14 @@ const currentSlide = ref(0);
 
 console.log(data.value);
 
-// const computedStyles = computed(() => "url(/" + data.value[currentSlide.value].picture + ")");
-
 const nextSlide = () => {
-  if (data.value[currentSlide.value + 1]) {
+  if (data.value.slides[currentSlide.value + 1]) {
     currentSlide.value += 1;
   }
 };
 
 const prevSlide = () => {
-  if (data.value[currentSlide.value - 1]) {
+  if (data.value.slides[currentSlide.value - 1]) {
     currentSlide.value -= 1;
   }
 };
